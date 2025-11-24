@@ -32,7 +32,7 @@ namespace ConsoleNotepad
                 switch (choose)
                 {
                     case "1":
-                        Console.WriteLine("Add the new task");
+                        Console.WriteLine("Add a new task");
 
                         var newTask = Console.ReadLine();
 
@@ -62,7 +62,6 @@ namespace ConsoleNotepad
 
 
                         Console.WriteLine("Bye Bye");
-
                         return;
 
 
@@ -71,6 +70,7 @@ namespace ConsoleNotepad
                         break;
 
                 }
+
             }
         }
     }
