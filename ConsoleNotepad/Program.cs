@@ -9,67 +9,63 @@ namespace ConsoleNotepad
     internal class Program
     {
 
-        class Job
-        {
-            public String Task { get; set; }
-            public bool Did { get; set; }
-        }
         static void Main(string[] args)
         {
-
-            List<Job> TaskList = new List<Job>();
-
+           
+            TaskManager manager = new TaskManager();
 
             while (true)
             {
-                Console.WriteLine("TO DO LIST");
+
+                Console.WriteLine("=== OOP TODO APP ===");
                 Console.WriteLine("1) New Task");
                 Console.WriteLine("2) All Tasks");
                 Console.WriteLine("3) Quit");
-                Console.WriteLine("Choose Action");
+                Console.Write("Choose: ");
+
                 string choose = Console.ReadLine();
 
                 switch (choose)
                 {
                     case "1":
-                        Console.WriteLine("Add a new task");
+                        Console.Write("Task description: ");
+                        string input = Console.ReadLine();
 
-                        var newTask = Console.ReadLine();
-
-                        TaskList.Add(new Job { Task = newTask, Did = false });
-                        Console.WriteLine("Task Added");
+                        if (!string.IsNullOrWhiteSpace(input))
+                        {
+                            manager.AddTask(input);
+                            Console.WriteLine("Task Added!");
+                        }
                         break;
 
                     case "2":
-                        Console.WriteLine("All Tasks");
-                        if (TaskList.Count == 0)
-                        {
-                            Console.WriteLine("We are free");
-                        }
+                        Console.WriteLine("\n--- Tasks ---");
 
+                        var myTasks = manager.GetAllTasks();
+
+                        if (myTasks.Count == 0)
+                        {
+                            Console.WriteLine("No tasks.");
+                        }
                         else
                         {
                             int counter = 1;
-                            foreach (var task in TaskList)
+                            foreach (var item in myTasks)
                             {
-                                Console.WriteLine($"{counter}.{task.Task}");
+                                Console.WriteLine($"{counter}. {item.Title}");
                                 counter++;
                             }
                         }
                         break;
 
                     case "3":
-
-
-                        Console.WriteLine("Bye Bye");
-
                         return;
+
 
 
                     default:
                         Console.WriteLine("Wrong input. Please try again !!!");
                         break;
-
                 }
             }
         }
