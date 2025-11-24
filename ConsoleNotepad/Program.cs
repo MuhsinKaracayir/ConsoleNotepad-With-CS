@@ -62,6 +62,7 @@ namespace ConsoleNotepad
 
 
                         Console.WriteLine("Bye Bye");
+
                         return;
 
 
@@ -70,7 +71,6 @@ namespace ConsoleNotepad
                         break;
 
                 }
-
             }
         }
     }
